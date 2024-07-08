@@ -1,4 +1,3 @@
-package BitManipulation;
 
 import java.util.Scanner;
 
