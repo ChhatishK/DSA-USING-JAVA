@@ -29,6 +29,39 @@ public class Test {
         }
     }
 
+    // Write a java program to find length of longest proper prefix which have same suffix in the string.
+    private static int longestProperPrefix(String str) {
+        if (str.isEmpty()) {
+            return 0;
+        }
+        int n = str.length();
+        int maxLength = 0;
+        String prefix = "";
+        for (int len = 1; len <= n/2; len++) {
+            if (str.substring(0, len).equals(str.substring(n-len))) {
+                prefix = str.substring(0, len);
+                maxLength = len;
+            }
+        }
+        System.out.println("Prefix : "+prefix);
+        return maxLength;
+        
+    }
+
+    private static String checkSuffix(String str, String prefix) {
+        // System.out.println("Str : "+str+"......."+"Prefix : "+prefix);
+        StringBuffer pref = new StringBuffer();
+        for (int i=prefix.length()-1; i>=0; i--) {
+            if (prefix.charAt(i) == str.charAt(i)) {
+                pref.insert(0, str.charAt(i));
+            } else {
+                return "";
+            }
+        }
+
+        return pref.toString();
+    }
+
     void hello() {
         System.out.println("Hello World!");
     }
@@ -40,8 +73,11 @@ public class Test {
         // System.out.println(a.sum(2, 5));
         // System.out.println(a.sum(2.0, 5.0));
 
-        int a = 3, b = 4, c = 2;
-        System.out.println(smallesAmongstThree(a, b, c));
+        // int a = 25, b = 37, c = 29;
+        // System.out.println(smallesAmongstThree(a, b, c));
+
+        String str = "smartintsmart";
+        System.out.println(longestProperPrefix(str));
     }
     
 }
