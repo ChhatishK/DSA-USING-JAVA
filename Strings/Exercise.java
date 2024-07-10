@@ -64,6 +64,20 @@ public class Exercise {
 
     }
 
+    private static boolean isPalindrome(String str) {
+        if (str.isEmpty()) {
+            return true;
+        }
+
+        for (int i=0; i<str.length()/2; i++) {
+            if(str.charAt(i) != str.charAt(str.length()-1-i)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         
         // String str1 = "This is Exercise 1";
@@ -79,7 +93,10 @@ public class Exercise {
         // }
 
         String exp = "({[]})";
-        System.out.println(validParentheses(exp));
-        System.out.println(valParentheses(exp));
+        // System.out.println(validParentheses(exp));
+        // System.out.println(valParentheses(exp));
+
+        String input = "noon";
+        System.out.println(isPalindrome(input));
     }
 }
