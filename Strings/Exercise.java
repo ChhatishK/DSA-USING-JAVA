@@ -5,8 +5,6 @@ public class Exercise {
     public static boolean validParentheses(String str){
         Stack<Character> s = new Stack<>();
         
-
-
         for(int i=0; i<str.length(); i++){
             char ch = str.charAt(i);
 
@@ -38,6 +36,34 @@ public class Exercise {
         
     }
 
+    // Approach 2
+    private static boolean valParentheses(String str) {
+        if (str.isEmpty()) {
+            return true;
+        }
+
+        StringBuffer exp = new StringBuffer();
+
+        for (int i=0; i<str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch == '(' || ch=='{' || ch=='[') {
+                exp.append(ch);
+            } else {
+                char top = exp.charAt(exp.length()-1);
+                if ((top == ')' && ch == '(') || (top == '}' && ch == '{') || (top == ']' && ch == '[')) {
+                    exp.deleteCharAt(exp.length()-1);
+                }
+            }
+        }
+
+        if (exp.length() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     public static void main(String[] args) {
         
         // String str1 = "This is Exercise 1";
@@ -54,5 +80,6 @@ public class Exercise {
 
         String exp = "({[]})";
         System.out.println(validParentheses(exp));
+        System.out.println(valParentheses(exp));
     }
 }
