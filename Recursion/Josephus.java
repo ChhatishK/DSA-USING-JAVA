@@ -11,7 +11,6 @@ public class Josephus {
 
     public static void main(String args[]) {
         int n=9, k = 2;
-        int safePerson = safePeople(k, n)+1;
-        System.out.println("The safe person : "+safePerson);
+        System.out.println("The safe person : "+(safePeople(k, n)+1));
     }
 }
