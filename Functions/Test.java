@@ -65,6 +65,30 @@ public class Test {
     void hello() {
         System.out.println("Hello World!");
     }
+
+    // Write a program to print k times next character at that current character's position.
+    public static String changeString(String str, int k) {
+        if (str.isEmpty()) {
+            return "";
+        }
+
+        StringBuilder res = new StringBuilder();
+        int a = 'a' - 0;
+        int z = 'z' - 0;
+        for (int i=0; i<str.length(); i++) {
+            int ch = str.charAt(i) - 0;
+            ch += k;
+
+            if (ch > z) {
+                ch %= z;
+                res.append((char)(a+ch));
+            } else {
+                res.append((char) ch);
+            }
+        }
+
+        return res.toString();
+    }
     public static void main(String[] args) {
         // System.out.println(add(2,3));
         // Test t = new Test();
@@ -76,8 +100,11 @@ public class Test {
         // int a = 25, b = 37, c = 29;
         // System.out.println(smallesAmongstThree(a, b, c));
 
-        String str = "smartintsmart";
-        System.out.println(longestProperPrefix(str));
+        // String str = "smartintsmart";
+        // System.out.println(longestProperPrefix(str));
+
+        String str = "smart";
+        System.out.println(changeString(str, 3));
     }
     
 }
