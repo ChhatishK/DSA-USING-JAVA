@@ -1,6 +1,7 @@
 import java.util.*;
 public class SelectionSort {
     static int selectionSort(int arr[]) {
+        boolean indexSwapped[] = new boolean[arr.length];
         int swapCount = 0;
         for (int i=0; i<arr.length; i++) {
             int min = i;
@@ -8,6 +9,8 @@ public class SelectionSort {
                 if (arr[j] < arr[min]) {
                     min = j;
                     swapCount++;
+                    System.out.print(min+" ");
+                    indexSwapped[min] = true;
                 }
             }
 
@@ -16,7 +19,7 @@ public class SelectionSort {
             arr[i] = temp;
 
         }
-
+        System.out.println(Arrays.toString(indexSwapped));
         return swapCount;
     }
     public static void main(String args[]) {
