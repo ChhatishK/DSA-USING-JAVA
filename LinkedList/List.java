@@ -14,6 +14,12 @@ public class List {
 
     static void insertAtBeg(int data) {
         Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    static void insertAtEnd(int data) {
+        Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
             return;
@@ -45,10 +51,24 @@ public class List {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         List list = new List();
-        list.insertAtBeg(5);
-        list.insertAtBeg(10);
-        list.displayList(head);
 
-        
+        while (true) {
+            System.out.println("\n1.insertAtBeg\n2.insertAtEnd\n3.displayList\nEnter choise : ");
+            int choise = scan.nextInt();
+            if (choise == 1) {
+                System.out.println("Enter a number into the list: ");
+                int num = scan.nextInt();
+                insertAtBeg(num);
+            } else if (choise == 2) {
+                System.out.println("Enter a number into the list: ");
+                int num = scan.nextInt();
+                insertAtEnd(num);
+            } else if (choise == 3) {
+                displayList(head);
+            } else {
+                System.out.println("Program terminated!");
+                break;
+            }
+        }
     }
 }
