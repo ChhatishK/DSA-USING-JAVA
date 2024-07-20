@@ -97,6 +97,32 @@ public class List {
         displayList();
     }
 
+    static void deleteAtPos(int index) {
+        if (index <= 0 || index > size) {
+            System.out.println("Invalid index!");
+            return;
+        }
+
+        if (index == 1) {
+            deleteAtBeg();
+            size--;
+            return;
+        }
+        if (index == size) {
+            deleteAtEnd();
+            size--;
+            return;
+        }
+
+        Node track = head;
+        for (int i=1; i<index-1; i++) {
+            track = track.next;
+        }
+
+        track.next = track.next.next;
+        size--;
+    }
+  
     static void displayList() {
         if (head == null) {
             System.out.println("List is empty!");
@@ -115,7 +141,7 @@ public class List {
         Scanner scan = new Scanner(System.in);
 
         while (true) {
-            System.out.println("\n1.insertAtBeg\n2.insertAtEnd\n3.displayList\n4.Delete at Begining\n5. Delete at End\n6.Insert at Index\nEnter choise : ");
+            System.out.println("\n1.insertAtBeg\n2.insertAtEnd\n3.displayList\n4.Delete at Begining\n5. Delete at End\n6.Insert at Index\n7.Delete At index\nEnter choise : ");
             int choise = scan.nextInt();
             if (choise == 1) {
                 System.out.println("Enter a number into the list: ");
@@ -137,6 +163,10 @@ public class List {
                 System.out.println("Enter the position : ");
                 int pos = scan.nextInt();
                 insertAtPos(num, pos);
+            } else if (choise == 7) {
+                System.out.println("Enter the index : ");
+                int pos = scan.nextInt();
+                deleteAtPos(pos);
             }
             else {
                 System.out.println("Entered Wrong choise! \nProgram terminated!");
