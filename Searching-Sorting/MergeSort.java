@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class MergeSort {
 
     public static void mergeSort(int nums[], int si, int ei) {
@@ -39,11 +40,10 @@ public class MergeSort {
     }
     public static void main(String args[]) {
         int nums[] = {5,4,3,2,1,6,7,8,9,10};
+        System.out.println("Before MergeSort : "+Arrays.toString(nums));
         int n = nums.length;
         mergeSort(nums, 0, n-1);
 
-        for (int num : nums) {
-            System.out.print(num+" ");
-        }
+        System.out.println("After MergeSort : "+Arrays.toString(nums));
     }
 }
