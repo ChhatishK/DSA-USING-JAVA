@@ -11,7 +11,13 @@ public class Infix {
             int ascii = (int)ch;
 
             if (ascii >= 48 && ascii <= 57) {
-                val.push(ascii - '0');
+                int n = 0;
+                while (i < str.length() && ((int)str.charAt(i) >= 48 && (int)str.charAt(i) <= 57)) {
+                    n = n * 10 + (str.charAt(i) - '0');
+                    i++;
+                }
+                val.push(n);
+                i--;
             } else if (op.size() == 0 || ch == '(' || op.peek() == '(') {
                 op.push(ch);
             } else if (ch == ')') {
@@ -29,13 +35,15 @@ public class Infix {
             } 
             else {
                 if (ch == '+' || ch == '-') {
-                    int v2 = val.pop();
-                    int v1 = val.pop();
-                    char c = op.pop();
-                    if (c == '+') val.push(v1 + v2);
-                    else if (c == '-') val.push(v1 - v2);
-                    else if (c == '*') val.push(v1 * v2);
-                    else if (c == '/') val.push(v1 / v2);
+                    while (op.size() != 0) {
+                        int v2 = val.pop();
+                        int v1 = val.pop();
+                        char c = op.pop();
+                        if (c == '+') val.push(v1 + v2);
+                        else if (c == '-') val.push(v1 - v2);
+                        else if (c == '*') val.push(v1 * v2);
+                        else if (c == '/') val.push(v1 / v2);
+                    }
 
                     op.push(ch);
                 } else {
