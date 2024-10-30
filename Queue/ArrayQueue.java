@@ -8,7 +8,7 @@ public class ArrayQueue {
 
         public void add(int val) {
 
-            if (r == arr.length) {
+            if (r == arr.length-1) {
                 System.out.println("Queue is full!");
                 return;
             }
