@@ -1,15 +1,13 @@
 package Recursion;
 
 public class SumOfDigit {
-    static int sumOfDigit(int n) {
-        if (n == 0) {
-            return 0;
-        }
+    static int digitSum(int n) {
+        if (n == 0) return n;
         
-        return  n%10 + sumOfDigit(n/10);
+        return n%10 + digitSum(n/10);
     }
 
     public static void main(String[] args) {
-        System.out.println(sumOfDigit(234));
+        System.out.println(digitSum(12345));
     }
 }
